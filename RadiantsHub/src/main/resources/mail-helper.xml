@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<util:map id="mapHelper" map-class="java.util.HashMap">
+    <entry key="a" value="blob"></entry>
+    <entry key="b" value="clob"></entry>
+</util:map>

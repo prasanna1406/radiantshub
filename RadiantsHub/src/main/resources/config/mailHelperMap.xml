@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-4.1.xsd  
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-4.1.xsd  
+      http://www.springframework.org/schema/mvc
+      http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd">
+
+	<bean id="adminHandler" class="com.radiantshub.service.TestService"></bean>
+
+	<bean id="passwordCreate" class="com.radiantshub.mail.MailContent">
+
+		<property name="subject" value="GENERATE PASSWORD" />
+		<property name="fileName" value="password-generate.html" />
+
+
+		<!-- java.util.Map -->
+		<property name="replacingContent">
+			<map>
+				<entry key="*|NAME|*" value="vivek" />
+				<entry key="*|LINK|*" value="http://google.com" />
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="passwordChange" class="com.radiantshub.mail.MailContent">
+
+		<property name="subject" value="GENERATE PASSWORD" />
+		<property name="fileName" value="password-generate.html" />
+
+
+		<!-- java.util.Map -->
+		<property name="replacingContent">
+			<map>
+				<entry key="*|NAME|*" value="vivek" />
+				<entry key="*|LINK|*" value="http://google.com" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="mailContentMap" class="java.util.HashMap">
+		<constructor-arg>
+        <map key-type="java.lang.String" value-type="com.radiantshub.mail.MailContent">
+            <entry key="CREATE_PASSWORD" value-ref="passwordCreate" />
+            <entry key="CHANGE_PASSWORD" value-ref="passwordChange" />
+        </map>
+    </constructor-arg>
+	</bean>
+
+</beans>
+
+
+
+<!-- <bean id="CustomerBean" class="com.mkyong.common.Customer"> java.util.List 
+	<property name="lists"> <list> <value>1</value> <ref bean="PersonBean" /> 
+	<bean class="com.mkyong.common.Person"> <property name="name" value="mkyongList" 
+	/> <property name="address" value="address" /> <property name="age" value="28" 
+	/> </bean> </list> </property> java.util.Set <property name="sets"> <set> 
+	<value>1</value> <ref bean="PersonBean" /> <bean class="com.mkyong.common.Person"> 
+	<property name="name" value="mkyongSet" /> <property name="address" value="address" 
+	/> <property name="age" value="28" /> </bean> </set> </property> java.util.Map 
+	<property name="maps"> <map> <entry key="Key 1" value="1" /> <entry key="Key 
+	2" value-ref="PersonBean" /> <entry key="Key 3"> <bean class="com.mkyong.common.Person"> 
+	<property name="name" value="mkyongMap" /> <property name="address" value="address" 
+	/> <property name="age" value="28" /> </bean> </entry> </map> </property> 
+	java.util.Properties <property name="pros"> <props> <prop key="admin">admin@nospam.com</prop> 
+	<prop key="support">support@nospam.com</prop> </props> </property> </bean> 
+	<bean id="PersonBean" class="com.mkyong.common.Person"> <property name="name" 
+	value="mkyong1" /> <property name="address" value="address 1" /> <property 
+	name="age" value="28" /> </bean> </beans> -->
